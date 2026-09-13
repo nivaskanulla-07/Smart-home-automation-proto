@@ -1,0 +1,509 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #10244b;
+  --muted: #60718e;
+  --page: #eef5fc;
+  --card: #ffffff;
+  --soft: #edf3f9;
+  --line: #d8e4f0;
+  --yellow: #ffe36a;
+  --yellow-strong: #ffd32f;
+  --yellow-glow: rgba(255, 211, 47, 0.55);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
+  color: var(--navy);
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      #ffffff 0,
+      #f4f8fd 32%,
+      var(--page) 100%
+    );
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  width: min(1180px, calc(100% - 32px));
+  margin: 22px auto 36px;
+}
+
+.college-header {
+  overflow: hidden;
+  border-radius: 0 0 12px 12px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(27, 57, 94, 0.08);
+}
+
+.college-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.control-panel,
+.credits-card {
+  margin-top: 24px;
+  padding: 34px 32px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid rgba(216, 228, 240, 0.8);
+  border-radius: 24px;
+
+  box-shadow: 0 16px 40px rgba(28, 57, 94, 0.08);
+}
+
+.hero-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  text-align: left;
+
+  margin: 0 0 30px;
+}
+
+.bulb-title {
+  font-size: 48px;
+
+  filter: drop-shadow(
+    0 4px 5px rgba(255, 211, 47, 0.35)
+  );
+}
+
+.hero-title h1 {
+  margin: 0;
+
+  font-size: clamp(32px, 4vw, 47px);
+
+  letter-spacing: -1.5px;
+}
+
+.hero-title p {
+  margin: 8px 0 0;
+
+  color: var(--muted);
+
+  font-size: 21px;
+}
+
+.master-controls {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  width: min(800px, 100%);
+
+  margin: 0 auto 26px;
+
+  border: 1px solid #d4e0ed;
+
+  border-radius: 48px;
+
+  overflow: hidden;
+
+  background: #f8fbff;
+
+  box-shadow:
+    inset 0 1px 2px rgba(25, 55, 90, 0.04);
+}
+
+.master-btn {
+  min-height: 88px;
+
+  border: 0;
+
+  cursor: pointer;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 17px;
+
+  color: var(--navy);
+
+  font-size: 27px;
+
+  font-weight: 750;
+
+  transition: 0.2s ease;
+}
+
+.master-btn:hover {
+  filter: brightness(0.985);
+}
+
+.master-btn:active {
+  transform: scale(0.99);
+}
+
+.master-btn.all-on.active {
+  background: var(--yellow);
+}
+
+.master-btn.all-off {
+  background: #f8fbff;
+}
+
+.master-btn.all-off.active {
+  background: #e8eef5;
+}
+
+.power-icon {
+  font-size: 36px;
+
+  line-height: 1;
+}
+
+.room-card {
+  min-height: 104px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 22px 28px;
+
+  margin-bottom: 20px;
+
+  border: 1px solid #dce7f2;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5f9fd,
+      #edf3f9
+    );
+}
+
+.room-icon {
+  font-size: 42px;
+}
+
+.room-info {
+  flex: 1;
+}
+
+.room-info h2 {
+  margin: 0;
+
+  font-size: 27px;
+}
+
+.room-info span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--muted);
+
+  font-size: 20px;
+}
+
+.expand-btn {
+  width: 56px;
+  height: 56px;
+
+  border: 1px solid #dce7f2;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  color: var(--navy);
+
+  font-size: 32px;
+
+  cursor: pointer;
+}
+
+.switch-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+}
+
+.switch-card {
+  min-height: 132px;
+
+  border: 1px solid #dbe6f1;
+
+  border-radius: 22px;
+
+  background: #f0f5fa;
+
+  color: var(--navy);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 22px 30px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.switch-card:hover {
+  transform: translateY(-2px);
+}
+
+.switch-card.on {
+  background:
+    linear-gradient(
+      135deg,
+      #fff0a1,
+      var(--yellow)
+    );
+
+  border-color: #ffd84b;
+
+  box-shadow:
+    0 0 20px var(--yellow-glow),
+    0 8px 22px rgba(255, 211, 47, 0.22);
+}
+
+.switch-icon {
+  width: 62px;
+
+  flex: 0 0 62px;
+
+  text-align: center;
+
+  font-size: 47px;
+
+  filter: grayscale(1);
+
+  opacity: 0.9;
+
+  transition: 0.2s ease;
+}
+
+.switch-card.on .switch-icon {
+  filter: none;
+
+  filter:
+    drop-shadow(
+      0 0 9px rgba(255, 188, 0, 0.75)
+    );
+}
+
+.switch-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.switch-info strong {
+  font-size: 24px;
+}
+
+.switch-info small {
+  font-size: 19px;
+
+  color: var(--muted);
+}
+
+.credits-card {
+  padding-top: 24px;
+}
+
+.credits-title {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+}
+
+.credits-title span {
+  font-size: 25px;
+}
+
+.credits-title h2 {
+  margin: 0;
+
+  font-size: 24px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+
+  border: 1px solid #cfdfed;
+
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 620px;
+}
+
+th,
+td {
+  padding: 10px 14px;
+
+  border-right: 1px solid #cfdfed;
+
+  border-bottom: 1px solid #cfdfed;
+
+  text-align: center;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: #e5f1fc;
+
+  font-size: 16px;
+}
+
+td {
+  background: #fbfdff;
+
+  font-size: 16px;
+}
+
+footer {
+  margin-top: 20px;
+
+  padding-top: 17px;
+
+  border-top: 1px solid #cfdfed;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+
+  .page {
+    width: min(100% - 18px, 1180px);
+
+    margin-top: 10px;
+  }
+
+  .control-panel,
+  .credits-card {
+    padding: 24px 16px;
+
+    border-radius: 18px;
+  }
+
+  .hero-title {
+    gap: 10px;
+  }
+
+  .bulb-title {
+    font-size: 38px;
+  }
+
+  .hero-title h1 {
+    font-size: 29px;
+  }
+
+  .hero-title p {
+    font-size: 16px;
+  }
+
+  .master-btn {
+    min-height: 70px;
+
+    font-size: 19px;
+  }
+
+  .power-icon {
+    font-size: 28px;
+  }
+
+  .switch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .switch-card {
+    min-height: 105px;
+  }
+
+  footer {
+    flex-direction: column;
+
+    text-align: center;
+  }
+}
+
+
+/* ============================================================
+   PSCMR CAMPUS BACKGROUND
+   ONLY ADDITION TO THE ORIGINAL CSS
+   ============================================================ */
+
+body {
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.55),
+      rgba(238, 245, 252, 0.65)
+    ),
+    url("images.jpg");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-attachment: fixed;
+
+  background-repeat: no-repeat;
+}
