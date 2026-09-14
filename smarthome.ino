@@ -42,8 +42,8 @@
 
 // CHANGE THESE
 
-const char* WIFI_SSID = "your wifi name";
-const char* WIFI_PASSWORD = "passkey";
+const char* WIFI_SSID = "Siva's_wifi_2G";
+const char* WIFI_PASSWORD = "Hellosiva";
 
 
 // ============================================================
@@ -52,7 +52,7 @@ const char* WIFI_PASSWORD = "passkey";
 
 #define RELAY1 2
 #define RELAY2 4
-#define RELAY3 15
+#define RELAY3 27
 
 
 // ============================================================
@@ -138,31 +138,29 @@ bool temperatureValid = false;
 unsigned long lastDTHRead = 0;
 const unsigned long DTH_INTERVAL = 2500;
 
-dht.begin();
-serial.println("DTH11 started");
-readDHT();
-
-
 // Read the DHT11 only when the minimum DHT11 interval has passed.
-void readDHT() {
+bool readDHT() {
 
   if (
-     millis() - lastTemperatureRead < DHT_INTERVAL
+     millis() - lastDTHRead < DTH_INTERVAL
   ) {
-    return;
+    return temperatureValid;
   }
-  lastDHt=millis();
+  lastDTHRead = millis();
   float newTemperature = dht.readTemperature();
 
   if (!isnan(newTemperature)) {
-    temprature=newTemperature;
+    temperatureC = newTemperature;
     temperatureValid = true;
-    Serial.println("Tremperature: ");
-    serial.print(temperature);
-    serial.println(" %");
-    
-
+    Serial.println("Temperature: ");
+    Serial.print(temperatureC);
+    Serial.println(" C");
+    return true;
   }
+
+  temperatureValid = false;
+  return false;
+}
 
 
 // ============================================================
@@ -224,7 +222,7 @@ void Tempratureoff() {
 
 void getTemperature() {
 
-  bool ok = readTemperature();
+  bool ok = readDHT();
 
   enableCORS();
 
